@@ -7,6 +7,7 @@ public class Livro {
     String descricao;
     double valor;
     String isbn;
+    Autor autor;
 
     public String getNome() {
         return nome;
@@ -40,10 +41,31 @@ public class Livro {
         this.isbn = isbn;
     }
 
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
     public void mostrarDetalhes() {
-        System.out.println(this.nome);
-        System.out.println(this.descricao);
-        System.out.println(this.valor);
-        System.out.println(this.isbn);
+        System.out.println("Mostrando detalhes do livro");
+        System.out.println("Nome: "+this.nome);
+        System.out.println("Descrição: "+ this.descricao);
+        System.out.println("Valor atual: "+this.valor);
+        System.out.println("ISBN: "+this.isbn);
+        if (this.temAutor()) {
+            this.autor.mostrarDetalhes();
+        }
+        System.out.println("--");
+    }
+
+    public void aplicaDescontoDe(double valor) {
+        this.valor -= this.valor * valor;
+    }
+
+    public boolean temAutor() {
+        return this.autor != null;
     }
 }
